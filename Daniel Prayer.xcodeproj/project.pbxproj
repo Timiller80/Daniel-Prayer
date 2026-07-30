@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2ADF838F2FA772D600B1298F /* Daniel Prayer Watch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 2ADF836F2FA772D500B1298F /* Daniel Prayer Watch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2ADF838F2FA772D600B1298F /* Pray Like Daniel Watch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 2ADF836F2FA772D500B1298F /* Pray Like Daniel Watch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +55,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				2ADF838F2FA772D600B1298F /* Daniel Prayer Watch Watch App.app in Embed Watch Content */,
+				2ADF838F2FA772D600B1298F /* Pray Like Daniel Watch Watch App.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,13 +63,23 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2A011E522D28CDCB005CEE29 /* Daniel Prayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Daniel Prayer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2A011E642D28CDCC005CEE29 /* Daniel PrayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Daniel PrayerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2A011E6E2D28CDCC005CEE29 /* Daniel PrayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Daniel PrayerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2ADF836F2FA772D500B1298F /* Daniel Prayer Watch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Daniel Prayer Watch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2ADF837B2FA772D600B1298F /* Daniel Prayer Watch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Daniel Prayer Watch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2ADF83852FA772D600B1298F /* Daniel Prayer Watch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Daniel Prayer Watch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A011E522D28CDCB005CEE29 /* Pray Like Daniel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pray Like Daniel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A011E642D28CDCC005CEE29 /* Pray Like DanielTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pray Like DanielTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A011E6E2D28CDCC005CEE29 /* Pray Like DanielUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pray Like DanielUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2ADF836F2FA772D500B1298F /* Pray Like Daniel Watch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pray Like Daniel Watch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2ADF837B2FA772D600B1298F /* Pray Like Daniel Watch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pray Like Daniel Watch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2ADF83852FA772D600B1298F /* Pray Like Daniel Watch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pray Like Daniel Watch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		2AD667222FD4B12100153BFF /* Exceptions for "Daniel Prayer Watch Watch App" folder in "Pray Like Daniel Watch Watch App" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Daniel-Prayer-Watch-Watch-App-Info.plist",
+			);
+			target = 2ADF836E2FA772D500B1298F /* Pray Like Daniel Watch Watch App */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		2A011E542D28CDCB005CEE29 /* Daniel Prayer */ = {
@@ -89,6 +99,9 @@
 		};
 		2ADF83702FA772D500B1298F /* Daniel Prayer Watch Watch App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2AD667222FD4B12100153BFF /* Exceptions for "Daniel Prayer Watch Watch App" folder in "Pray Like Daniel Watch Watch App" target */,
+			);
 			path = "Daniel Prayer Watch Watch App";
 			sourceTree = "<group>";
 		};
@@ -166,12 +179,12 @@
 		2A011E532D28CDCB005CEE29 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2A011E522D28CDCB005CEE29 /* Daniel Prayer.app */,
-				2A011E642D28CDCC005CEE29 /* Daniel PrayerTests.xctest */,
-				2A011E6E2D28CDCC005CEE29 /* Daniel PrayerUITests.xctest */,
-				2ADF836F2FA772D500B1298F /* Daniel Prayer Watch Watch App.app */,
-				2ADF837B2FA772D600B1298F /* Daniel Prayer Watch Watch AppTests.xctest */,
-				2ADF83852FA772D600B1298F /* Daniel Prayer Watch Watch AppUITests.xctest */,
+				2A011E522D28CDCB005CEE29 /* Pray Like Daniel.app */,
+				2A011E642D28CDCC005CEE29 /* Pray Like DanielTests.xctest */,
+				2A011E6E2D28CDCC005CEE29 /* Pray Like DanielUITests.xctest */,
+				2ADF836F2FA772D500B1298F /* Pray Like Daniel Watch Watch App.app */,
+				2ADF837B2FA772D600B1298F /* Pray Like Daniel Watch Watch AppTests.xctest */,
+				2ADF83852FA772D600B1298F /* Pray Like Daniel Watch Watch AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -179,9 +192,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2A011E512D28CDCB005CEE29 /* Daniel Prayer */ = {
+		2A011E512D28CDCB005CEE29 /* Pray Like Daniel */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2A011E782D28CDCC005CEE29 /* Build configuration list for PBXNativeTarget "Daniel Prayer" */;
+			buildConfigurationList = 2A011E782D28CDCC005CEE29 /* Build configuration list for PBXNativeTarget "Pray Like Daniel" */;
 			buildPhases = (
 				2A011E4E2D28CDCB005CEE29 /* Sources */,
 				2A011E4F2D28CDCB005CEE29 /* Frameworks */,
@@ -196,16 +209,16 @@
 			fileSystemSynchronizedGroups = (
 				2A011E542D28CDCB005CEE29 /* Daniel Prayer */,
 			);
-			name = "Daniel Prayer";
+			name = "Pray Like Daniel";
 			packageProductDependencies = (
 			);
 			productName = "Daniel Prayer";
-			productReference = 2A011E522D28CDCB005CEE29 /* Daniel Prayer.app */;
+			productReference = 2A011E522D28CDCB005CEE29 /* Pray Like Daniel.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2A011E632D28CDCC005CEE29 /* Daniel PrayerTests */ = {
+		2A011E632D28CDCC005CEE29 /* Pray Like DanielTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2A011E7B2D28CDCC005CEE29 /* Build configuration list for PBXNativeTarget "Daniel PrayerTests" */;
+			buildConfigurationList = 2A011E7B2D28CDCC005CEE29 /* Build configuration list for PBXNativeTarget "Pray Like DanielTests" */;
 			buildPhases = (
 				2A011E602D28CDCC005CEE29 /* Sources */,
 				2A011E612D28CDCC005CEE29 /* Frameworks */,
@@ -219,16 +232,16 @@
 			fileSystemSynchronizedGroups = (
 				2A011E672D28CDCC005CEE29 /* Daniel PrayerTests */,
 			);
-			name = "Daniel PrayerTests";
+			name = "Pray Like DanielTests";
 			packageProductDependencies = (
 			);
 			productName = "Daniel PrayerTests";
-			productReference = 2A011E642D28CDCC005CEE29 /* Daniel PrayerTests.xctest */;
+			productReference = 2A011E642D28CDCC005CEE29 /* Pray Like DanielTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		2A011E6D2D28CDCC005CEE29 /* Daniel PrayerUITests */ = {
+		2A011E6D2D28CDCC005CEE29 /* Pray Like DanielUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2A011E7E2D28CDCC005CEE29 /* Build configuration list for PBXNativeTarget "Daniel PrayerUITests" */;
+			buildConfigurationList = 2A011E7E2D28CDCC005CEE29 /* Build configuration list for PBXNativeTarget "Pray Like DanielUITests" */;
 			buildPhases = (
 				2A011E6A2D28CDCC005CEE29 /* Sources */,
 				2A011E6B2D28CDCC005CEE29 /* Frameworks */,
@@ -242,16 +255,16 @@
 			fileSystemSynchronizedGroups = (
 				2A011E712D28CDCC005CEE29 /* Daniel PrayerUITests */,
 			);
-			name = "Daniel PrayerUITests";
+			name = "Pray Like DanielUITests";
 			packageProductDependencies = (
 			);
 			productName = "Daniel PrayerUITests";
-			productReference = 2A011E6E2D28CDCC005CEE29 /* Daniel PrayerUITests.xctest */;
+			productReference = 2A011E6E2D28CDCC005CEE29 /* Pray Like DanielUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		2ADF836E2FA772D500B1298F /* Daniel Prayer Watch Watch App */ = {
+		2ADF836E2FA772D500B1298F /* Pray Like Daniel Watch Watch App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2ADF83972FA772D600B1298F /* Build configuration list for PBXNativeTarget "Daniel Prayer Watch Watch App" */;
+			buildConfigurationList = 2ADF83972FA772D600B1298F /* Build configuration list for PBXNativeTarget "Pray Like Daniel Watch Watch App" */;
 			buildPhases = (
 				2ADF836B2FA772D500B1298F /* Sources */,
 				2ADF836C2FA772D500B1298F /* Frameworks */,
@@ -264,16 +277,16 @@
 			fileSystemSynchronizedGroups = (
 				2ADF83702FA772D500B1298F /* Daniel Prayer Watch Watch App */,
 			);
-			name = "Daniel Prayer Watch Watch App";
+			name = "Pray Like Daniel Watch Watch App";
 			packageProductDependencies = (
 			);
 			productName = "Daniel Prayer Watch Watch App";
-			productReference = 2ADF836F2FA772D500B1298F /* Daniel Prayer Watch Watch App.app */;
+			productReference = 2ADF836F2FA772D500B1298F /* Pray Like Daniel Watch Watch App.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2ADF837A2FA772D600B1298F /* Daniel Prayer Watch Watch AppTests */ = {
+		2ADF837A2FA772D600B1298F /* Pray Like Daniel Watch Watch AppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2ADF83982FA772D600B1298F /* Build configuration list for PBXNativeTarget "Daniel Prayer Watch Watch AppTests" */;
+			buildConfigurationList = 2ADF83982FA772D600B1298F /* Build configuration list for PBXNativeTarget "Pray Like Daniel Watch Watch AppTests" */;
 			buildPhases = (
 				2ADF83772FA772D600B1298F /* Sources */,
 				2ADF83782FA772D600B1298F /* Frameworks */,
@@ -287,16 +300,16 @@
 			fileSystemSynchronizedGroups = (
 				2ADF837E2FA772D600B1298F /* Daniel Prayer Watch Watch AppTests */,
 			);
-			name = "Daniel Prayer Watch Watch AppTests";
+			name = "Pray Like Daniel Watch Watch AppTests";
 			packageProductDependencies = (
 			);
 			productName = "Daniel Prayer Watch Watch AppTests";
-			productReference = 2ADF837B2FA772D600B1298F /* Daniel Prayer Watch Watch AppTests.xctest */;
+			productReference = 2ADF837B2FA772D600B1298F /* Pray Like Daniel Watch Watch AppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		2ADF83842FA772D600B1298F /* Daniel Prayer Watch Watch AppUITests */ = {
+		2ADF83842FA772D600B1298F /* Pray Like Daniel Watch Watch AppUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2ADF83992FA772D600B1298F /* Build configuration list for PBXNativeTarget "Daniel Prayer Watch Watch AppUITests" */;
+			buildConfigurationList = 2ADF83992FA772D600B1298F /* Build configuration list for PBXNativeTarget "Pray Like Daniel Watch Watch AppUITests" */;
 			buildPhases = (
 				2ADF83812FA772D600B1298F /* Sources */,
 				2ADF83822FA772D600B1298F /* Frameworks */,
@@ -310,11 +323,11 @@
 			fileSystemSynchronizedGroups = (
 				2ADF83882FA772D600B1298F /* Daniel Prayer Watch Watch AppUITests */,
 			);
-			name = "Daniel Prayer Watch Watch AppUITests";
+			name = "Pray Like Daniel Watch Watch AppUITests";
 			packageProductDependencies = (
 			);
 			productName = "Daniel Prayer Watch Watch AppUITests";
-			productReference = 2ADF83852FA772D600B1298F /* Daniel Prayer Watch Watch AppUITests.xctest */;
+			productReference = 2ADF83852FA772D600B1298F /* Pray Like Daniel Watch Watch AppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -367,12 +380,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2A011E512D28CDCB005CEE29 /* Daniel Prayer */,
-				2A011E632D28CDCC005CEE29 /* Daniel PrayerTests */,
-				2A011E6D2D28CDCC005CEE29 /* Daniel PrayerUITests */,
-				2ADF836E2FA772D500B1298F /* Daniel Prayer Watch Watch App */,
-				2ADF837A2FA772D600B1298F /* Daniel Prayer Watch Watch AppTests */,
-				2ADF83842FA772D600B1298F /* Daniel Prayer Watch Watch AppUITests */,
+				2A011E512D28CDCB005CEE29 /* Pray Like Daniel */,
+				2A011E632D28CDCC005CEE29 /* Pray Like DanielTests */,
+				2A011E6D2D28CDCC005CEE29 /* Pray Like DanielUITests */,
+				2ADF836E2FA772D500B1298F /* Pray Like Daniel Watch Watch App */,
+				2ADF837A2FA772D600B1298F /* Pray Like Daniel Watch Watch AppTests */,
+				2ADF83842FA772D600B1298F /* Pray Like Daniel Watch Watch AppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -470,27 +483,27 @@
 /* Begin PBXTargetDependency section */
 		2A011E662D28CDCC005CEE29 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2A011E512D28CDCB005CEE29 /* Daniel Prayer */;
+			target = 2A011E512D28CDCB005CEE29 /* Pray Like Daniel */;
 			targetProxy = 2A011E652D28CDCC005CEE29 /* PBXContainerItemProxy */;
 		};
 		2A011E702D28CDCC005CEE29 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2A011E512D28CDCB005CEE29 /* Daniel Prayer */;
+			target = 2A011E512D28CDCB005CEE29 /* Pray Like Daniel */;
 			targetProxy = 2A011E6F2D28CDCC005CEE29 /* PBXContainerItemProxy */;
 		};
 		2ADF837D2FA772D600B1298F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2ADF836E2FA772D500B1298F /* Daniel Prayer Watch Watch App */;
+			target = 2ADF836E2FA772D500B1298F /* Pray Like Daniel Watch Watch App */;
 			targetProxy = 2ADF837C2FA772D600B1298F /* PBXContainerItemProxy */;
 		};
 		2ADF83872FA772D600B1298F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2ADF836E2FA772D500B1298F /* Daniel Prayer Watch Watch App */;
+			target = 2ADF836E2FA772D500B1298F /* Pray Like Daniel Watch Watch App */;
 			targetProxy = 2ADF83862FA772D600B1298F /* PBXContainerItemProxy */;
 		};
 		2ADF838E2FA772D600B1298F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2ADF836E2FA772D500B1298F /* Daniel Prayer Watch Watch App */;
+			target = 2ADF836E2FA772D500B1298F /* Pray Like Daniel Watch Watch App */;
 			targetProxy = 2ADF838D2FA772D600B1298F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -631,13 +644,13 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Daniel Prayer/Daniel Prayer.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"Daniel Prayer/Preview Content\"";
 				DEVELOPMENT_TEAM = 2BDVXJUTKF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Daniel-Prayer-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Daniel Prayer";
+				INFOPLIST_KEY_CFBundleDisplayName = "Pray Like Daniel";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -650,7 +663,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "StarShine.Daniel-Prayer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -667,13 +680,13 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Daniel Prayer/Daniel Prayer.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"Daniel Prayer/Preview Content\"";
 				DEVELOPMENT_TEAM = 2BDVXJUTKF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Daniel-Prayer-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Daniel Prayer";
+				INFOPLIST_KEY_CFBundleDisplayName = "Pray Like Daniel";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -686,7 +699,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "StarShine.Daniel-Prayer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -701,6 +714,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2BDVXJUTKF;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
 				MARKETING_VERSION = 1.0;
@@ -719,6 +733,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2BDVXJUTKF;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
 				MARKETING_VERSION = 1.0;
@@ -736,6 +751,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2BDVXJUTKF;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
 				MARKETING_VERSION = 1.0;
@@ -753,6 +769,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2BDVXJUTKF;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
 				MARKETING_VERSION = 1.0;
@@ -771,19 +788,22 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = "Daniel Prayer Watch Watch App/Daniel Prayer Watch Watch AppDebug.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 2BDVXJUTKF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Daniel Prayer Watch";
+				INFOPLIST_FILE = "Daniel-Prayer-Watch-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Pray Like Daniel Watch";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "StarShine.Daniel-Prayer";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "StarShine.Daniel-Prayer.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -808,18 +828,20 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Daniel Prayer Watch Watch App/Daniel Prayer Watch Watch AppRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 2BDVXJUTKF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Daniel Prayer Watch";
+				INFOPLIST_FILE = "Daniel-Prayer-Watch-Watch-App-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Pray Like Daniel Watch";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "StarShine.Daniel-Prayer";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "StarShine.Daniel-Prayer.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -854,7 +876,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Daniel Prayer Watch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Daniel Prayer Watch Watch App";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pray Like Daniel Watch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Pray Like Daniel Watch Watch App";
 				WATCHOS_DEPLOYMENT_TARGET = 26.4;
 			};
 			name = Debug;
@@ -877,7 +899,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Daniel Prayer Watch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Daniel Prayer Watch Watch App";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pray Like Daniel Watch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Pray Like Daniel Watch Watch App";
 				WATCHOS_DEPLOYMENT_TARGET = 26.4;
 			};
 			name = Release;
@@ -938,7 +960,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2A011E782D28CDCC005CEE29 /* Build configuration list for PBXNativeTarget "Daniel Prayer" */ = {
+		2A011E782D28CDCC005CEE29 /* Build configuration list for PBXNativeTarget "Pray Like Daniel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2A011E792D28CDCC005CEE29 /* Debug */,
@@ -947,7 +969,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2A011E7B2D28CDCC005CEE29 /* Build configuration list for PBXNativeTarget "Daniel PrayerTests" */ = {
+		2A011E7B2D28CDCC005CEE29 /* Build configuration list for PBXNativeTarget "Pray Like DanielTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2A011E7C2D28CDCC005CEE29 /* Debug */,
@@ -956,7 +978,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2A011E7E2D28CDCC005CEE29 /* Build configuration list for PBXNativeTarget "Daniel PrayerUITests" */ = {
+		2A011E7E2D28CDCC005CEE29 /* Build configuration list for PBXNativeTarget "Pray Like DanielUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2A011E7F2D28CDCC005CEE29 /* Debug */,
@@ -965,7 +987,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2ADF83972FA772D600B1298F /* Build configuration list for PBXNativeTarget "Daniel Prayer Watch Watch App" */ = {
+		2ADF83972FA772D600B1298F /* Build configuration list for PBXNativeTarget "Pray Like Daniel Watch Watch App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2ADF83912FA772D600B1298F /* Debug */,
@@ -974,7 +996,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2ADF83982FA772D600B1298F /* Build configuration list for PBXNativeTarget "Daniel Prayer Watch Watch AppTests" */ = {
+		2ADF83982FA772D600B1298F /* Build configuration list for PBXNativeTarget "Pray Like Daniel Watch Watch AppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2ADF83932FA772D600B1298F /* Debug */,
@@ -983,7 +1005,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2ADF83992FA772D600B1298F /* Build configuration list for PBXNativeTarget "Daniel Prayer Watch Watch AppUITests" */ = {
+		2ADF83992FA772D600B1298F /* Build configuration list for PBXNativeTarget "Pray Like Daniel Watch Watch AppUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2ADF83952FA772D600B1298F /* Debug */,
