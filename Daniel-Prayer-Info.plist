@@ -3,6 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>NSAlarmKitUsageDescription</key>
-	<string>Daniel Prayer schedules alarms for your daily prayer reminders.</string>
+	<string>Pray Like Daniel schedules alarms for your daily prayer reminders.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 </dict>
 </plist>
