@@ -1,6 +1,6 @@
 //
 //  Daniel_PrayerApp.swift
-//  Daniel Prayer
+//  Pray Like Daniel
 //
 //  Created by Timothy Miller on 1/3/25.
 //
@@ -14,7 +14,17 @@ struct Daniel_PrayerApp: App {
         do {
             return try PrayerModelContainer.makeShared()
         } catch {
-            fatalError("Could not create ModelContainer: \(error)")
+            print("Could not create CloudKit ModelContainer: \(error)")
+            do {
+                return try PrayerModelContainer.makeLocal()
+            } catch {
+                print("Could not create local ModelContainer: \(error)")
+                do {
+                    return try PrayerModelContainer.makeInMemory()
+                } catch {
+                    preconditionFailure("Could not create in-memory ModelContainer: \(error)")
+                }
+            }
         }
     }()
 
