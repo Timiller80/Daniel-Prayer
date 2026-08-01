@@ -1,6 +1,6 @@
 //
 //  PrayerListBackupDocument.swift
-//  Daniel Prayer
+//  Pray Like Daniel
 //
 //  Created by OpenAI on 4/15/26.
 //
@@ -21,11 +21,15 @@ struct PrayerListBackupItem: Codable {
     var title: String
     var statusRawValue: Int
     var prayerPeriodRawValue: Int
+    var createdAt: Date?
+    var answeredAt: Date?
 
-    init(title: String, statusRawValue: Int, prayerPeriodRawValue: Int) {
+    init(title: String, statusRawValue: Int, prayerPeriodRawValue: Int, createdAt: Date?, answeredAt: Date?) {
         self.title = title
         self.statusRawValue = statusRawValue
         self.prayerPeriodRawValue = prayerPeriodRawValue
+        self.createdAt = createdAt
+        self.answeredAt = answeredAt
     }
 
     init(from decoder: any Decoder) throws {
@@ -41,6 +45,8 @@ struct PrayerListBackupItem: Codable {
         }
 
         prayerPeriodRawValue = try container.decodeIfPresent(Int.self, forKey: .prayerPeriodRawValue) ?? PrayerPeriod.current().rawValue
+        createdAt = try container.decodeIfPresent(Date.self, forKey: .createdAt)
+        answeredAt = try container.decodeIfPresent(Date.self, forKey: .answeredAt)
     }
 
     func encode(to encoder: any Encoder) throws {
@@ -48,12 +54,16 @@ struct PrayerListBackupItem: Codable {
         try container.encode(title, forKey: .title)
         try container.encode(statusRawValue, forKey: .statusRawValue)
         try container.encode(prayerPeriodRawValue, forKey: .prayerPeriodRawValue)
+        try container.encodeIfPresent(createdAt, forKey: .createdAt)
+        try container.encodeIfPresent(answeredAt, forKey: .answeredAt)
     }
 
     enum CodingKeys: String, CodingKey {
         case title
         case statusRawValue
         case prayerPeriodRawValue
+        case createdAt
+        case answeredAt
         case isCompleted
     }
 }

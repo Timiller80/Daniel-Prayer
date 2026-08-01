@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  Daniel Prayer
+//  Pray Like Daniel
 //
 //  Created by Timothy Miller on 1/3/25.
 //
@@ -38,7 +38,7 @@ struct ContentView: View {
     @State private var backupDocument = PrayerListBackupDocument()
     @AppStorage("followsCurrentPrayerPeriod") private var followsCurrentPrayerPeriod = true
     @AppStorage("selectedPrayerPeriodRawValue") private var selectedPrayerPeriodRawValue = PrayerPeriod.current().rawValue
-    @AppStorage("alarmTestModeEnabled") private var alarmTestModeEnabled = false
+    private let alarmTestModeEnabled = false
 
     @State private var alarm1Enabled = true
     @State private var alarm2Enabled = true
@@ -57,6 +57,7 @@ struct ContentView: View {
     @State private var alarm1Title: String = "Morning Prayer"
     @State private var alarm2Title: String = "Midday Prayer"
     @State private var alarm3Title: String = "Evening Prayer"
+    @FocusState private var focusedItemCreatedAt: Date?
 
     private var selectedPrayerPeriod: PrayerPeriod {
         get { PrayerPeriod(rawValue: selectedPrayerPeriodRawValue) ?? .morning }
@@ -68,11 +69,19 @@ struct ContentView: View {
     }
 
     private var activeItems: [Item] {
-        items.filter { $0.prayerPeriod == visiblePrayerPeriod && $0.status != .answered }
+        items
+            .filter { $0.prayerPeriod == visiblePrayerPeriod && $0.status != .answered }
+            .sorted { lhs, rhs in
+                (lhs.createdAt ?? .distantPast) > (rhs.createdAt ?? .distantPast)
+            }
     }
 
     private var answeredItems: [Item] {
-        items.filter { $0.prayerPeriod == visiblePrayerPeriod && $0.status == .answered }
+        items
+            .filter { $0.prayerPeriod == visiblePrayerPeriod && $0.status == .answered }
+            .sorted { lhs, rhs in
+                (lhs.answeredAt ?? lhs.createdAt ?? .distantPast) > (rhs.answeredAt ?? rhs.createdAt ?? .distantPast)
+            }
     }
 
     private var periodAccent: Color {
@@ -122,7 +131,7 @@ struct ContentView: View {
     // MARK: - Helpers
     #if canImport(AlarmKit)
     private func makePresentation(for title: String) -> AlarmPresentation {
-        let titleString: String = title.isEmpty ? "Alarm" : title
+        let titleString: String = title.isEmpty ? "Prayer Reminder" : title
         if #available(iOS 26.1, *) {
             let titleRes = LocalizedStringResource(stringLiteral: titleString)
             let alert = AlarmPresentation.Alert(title: titleRes)
@@ -137,7 +146,7 @@ struct ContentView: View {
     #endif
 
     var body: some View {
-        NavigationSplitView {
+        NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     currentPrayerHero
@@ -149,7 +158,12 @@ struct ContentView: View {
                             emptyPrayerCard(message: "No prayers in this list yet. Use the plus button to add one.")
                         } else {
                             ForEach(activeItems) { item in
-                                ItemRow(item: item, answeredList: false, accent: periodAccent) {
+                                ItemRow(
+                                    item: item,
+                                    answeredList: false,
+                                    accent: periodAccent,
+                                    focusedItemCreatedAt: $focusedItemCreatedAt
+                                ) {
                                     withAnimation {
                                         modelContext.delete(item)
                                     }
@@ -163,7 +177,12 @@ struct ContentView: View {
                             sectionHeading(title: "Answered Prayers", subtitle: "A gratitude archive for this time of day.")
 
                             ForEach(answeredItems) { item in
-                                ItemRow(item: item, answeredList: true, accent: periodAccent) {
+                                ItemRow(
+                                    item: item,
+                                    answeredList: true,
+                                    accent: periodAccent,
+                                    focusedItemCreatedAt: $focusedItemCreatedAt
+                                ) {
                                     withAnimation {
                                         modelContext.delete(item)
                                     }
@@ -174,6 +193,7 @@ struct ContentView: View {
                 }
                 .padding()
             }
+            .scrollDismissesKeyboard(.interactively)
             .background(
                 LinearGradient(
                     colors: [periodAccent.opacity(0.08), Color(.systemBackground), Color(.systemGroupedBackground)],
@@ -181,10 +201,16 @@ struct ContentView: View {
                     endPoint: .bottom
                 )
             )
-            .navigationTitle("Pray like Daniel")
+            .navigationTitle("Pray Like Daniel")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) { EditButton() }
                 ToolbarItem { Button { addItem() } label: { Label("Add Item", systemImage: "plus") } }
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Done") {
+                        focusedItemCreatedAt = nil
+                    }
+                }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
                         showingAlarmSettings = true
@@ -210,45 +236,6 @@ struct ContentView: View {
                     }
                 }
             }
-        } detail: {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    Text("Daily Alarms")
-                        .font(.largeTitle)
-                        .bold()
-
-                    Text("Use Settings to change each alarm's title, enabled state, and time.")
-                        .foregroundStyle(.secondary)
-
-                    Button {
-                        showingAlarmSettings = true
-                    } label: {
-                        Label("Alarm Settings", systemImage: "gearshape")
-                            .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(.bordered)
-
-                    Button(role: .none) {
-                        Task { await scheduleThreeDailyAlarms() }
-                    } label: {
-                        Label("Schedule Alarms", systemImage: "alarm")
-                            .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(.borderedProminent)
-
-                    if let statusMessage {
-                        Text(statusMessage)
-                            .foregroundStyle(.secondary)
-                            .multilineTextAlignment(.leading)
-                    } else {
-                        Text("Authorization: \(authorized ? "Granted" : "Not granted")")
-                            .foregroundStyle(authorized ? .green : .secondary)
-                    }
-
-                }
-                .padding()
-            }
-            .navigationTitle("Alarms")
         }
         .task {
             await requestAlarmAuthorization()
@@ -262,7 +249,7 @@ struct ContentView: View {
             isPresented: $showingBackupExporter,
             document: backupDocument,
             contentType: .json,
-            defaultFilename: "Daniel-Prayer-List-Backup"
+            defaultFilename: "Pray-Like-Daniel-List-Backup"
         ) { result in
             switch result {
             case .success:
@@ -292,16 +279,15 @@ struct ContentView: View {
                         .disabled(followsCurrentPrayerPeriod)
                         .opacity(followsCurrentPrayerPeriod ? 0.45 : 1)
 
-                        Toggle("Temporary Test Mode", isOn: $alarmTestModeEnabled)
 
-                        alarmEditor(title: "Alarm 1", enabled: $alarm1Enabled, time: alarmTimeBinding(for: 1), name: $alarm1Title)
-                        alarmEditor(title: "Alarm 2", enabled: $alarm2Enabled, time: alarmTimeBinding(for: 2), name: $alarm2Title)
-                        alarmEditor(title: "Alarm 3", enabled: $alarm3Enabled, time: alarmTimeBinding(for: 3), name: $alarm3Title)
+                        alarmEditor(title: "Prayer Reminder 1", enabled: $alarm1Enabled, time: alarmTimeBinding(for: 1), name: $alarm1Title)
+                        alarmEditor(title: "Prayer Reminder 2", enabled: $alarm2Enabled, time: alarmTimeBinding(for: 2), name: $alarm2Title)
+                        alarmEditor(title: "Prayer Reminder 3", enabled: $alarm3Enabled, time: alarmTimeBinding(for: 3), name: $alarm3Title)
 
                         Button(role: .none) {
                             Task { await scheduleThreeDailyAlarms() }
                         } label: {
-                            Label("Schedule Alarms", systemImage: "alarm")
+                            Label("Schedule Prayer Reminders", systemImage: "alarm")
                                 .frame(maxWidth: .infinity)
                         }
                         .buttonStyle(.borderedProminent)
@@ -318,7 +304,7 @@ struct ContentView: View {
                     }
                     .padding()
                 }
-                .navigationTitle("Alarm Settings")
+                .navigationTitle("Prayer Reminders")
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button("Done") {
@@ -402,7 +388,7 @@ struct ContentView: View {
         formatter.dateStyle = .medium
         formatter.timeStyle = .short
 
-        let descriptionPrefix = alarmTestModeEnabled ? "Test mode trigger" : "Next repeating trigger"
+        let descriptionPrefix = "Next repeating reminder"
         guard let nextDate = nextTriggerDate(for: time) else {
             return "\(descriptionPrefix): unavailable"
         }
@@ -454,7 +440,7 @@ struct ContentView: View {
         guard #available(iOS 26.0, *) else {
             await MainActor.run {
                 authorized = false
-                statusMessage = "Alarm feature requires iOS 26 or newer."
+                statusMessage = "Prayer reminders require iOS 26 or newer."
             }
             return
         }
@@ -468,7 +454,7 @@ struct ContentView: View {
             }
             await MainActor.run {
                 authorized = (state == .authorized)
-                statusMessage = authorized ? nil : "Alarm authorization denied. Enable it in Settings."
+                statusMessage = authorized ? nil : "Prayer reminder authorization denied. Enable it in Settings."
             }
         } catch {
             await MainActor.run {
@@ -479,7 +465,7 @@ struct ContentView: View {
         #else
         await MainActor.run {
             authorized = false
-            statusMessage = "AlarmKit not available in this build."
+            statusMessage = "Prayer reminders are not available in this build."
         }
         #endif
     }
@@ -558,7 +544,7 @@ struct ContentView: View {
     private func scheduleThreeDailyAlarms() async {
         #if canImport(AlarmKit)
         guard #available(iOS 26.0, *) else {
-            await MainActor.run { statusMessage = "Alarm feature requires iOS 26 or newer." }
+            await MainActor.run { statusMessage = "Prayer reminders require iOS 26 or newer." }
             return
         }
         guard authorized else {
@@ -634,18 +620,18 @@ struct ContentView: View {
 
             await MainActor.run {
                 if scheduledCount == 0 {
-                    statusMessage = "No alarms are enabled."
+                    statusMessage = "No prayer reminders are enabled."
                 } else if alarmTestModeEnabled {
-                    statusMessage = "\(scheduledCount) test alarm(s) scheduled."
+                    statusMessage = "\(scheduledCount) test prayer reminder(s) scheduled."
                 } else {
-                    statusMessage = "\(scheduledCount) repeating alarm(s) scheduled."
+                    statusMessage = "\(scheduledCount) repeating prayer reminder(s) scheduled."
                 }
             }
         } catch {
             await MainActor.run { statusMessage = "Failed to schedule: \(error.localizedDescription)" }
         }
         #else
-        await MainActor.run { statusMessage = "AlarmKit not available in this build." }
+        await MainActor.run { statusMessage = "Prayer reminders are not available in this build." }
         #endif
     }
 
@@ -659,7 +645,9 @@ struct ContentView: View {
                     PrayerListBackupItem(
                         title: item.title,
                         statusRawValue: item.statusRawValue,
-                        prayerPeriodRawValue: item.prayerPeriodRawValue
+                        prayerPeriodRawValue: item.prayerPeriodRawValue,
+                        createdAt: item.createdAt,
+                        answeredAt: item.answeredAt
                     )
                 }
             )
@@ -691,7 +679,7 @@ struct ContentView: View {
                     for backupItem in payload.items {
                         let status = PrayerStatus(rawValue: backupItem.statusRawValue) ?? .unchecked
                         let prayerPeriod = PrayerPeriod(rawValue: backupItem.prayerPeriodRawValue) ?? visiblePrayerPeriod
-                        modelContext.insert(Item(title: backupItem.title, status: status, prayerPeriod: prayerPeriod))
+                        modelContext.insert(Item(title: backupItem.title, status: status, prayerPeriod: prayerPeriod, createdAt: backupItem.createdAt ?? .now, answeredAt: backupItem.answeredAt))
                     }
                 }
 
@@ -706,9 +694,12 @@ struct ContentView: View {
     }
 
     private func addItem() {
+        let createdAt = Date()
         withAnimation {
-            modelContext.insert(Item(prayerPeriod: visiblePrayerPeriod))
+            modelContext.insert(Item(prayerPeriod: visiblePrayerPeriod, createdAt: createdAt))
+            focusedItemCreatedAt = createdAt
         }
+        try? modelContext.save()
     }
 
     private func deleteActiveItems(offsets: IndexSet) {
@@ -728,6 +719,7 @@ private struct ItemRow: View {
     @Bindable var item: Item
     let answeredList: Bool
     let accent: Color
+    var focusedItemCreatedAt: FocusState<Date?>.Binding
     let onDelete: () -> Void
 
     var body: some View {
@@ -741,7 +733,7 @@ private struct ItemRow: View {
                     }
                 }
             } label: {
-                Text(item.status.emoji)
+                statusIcon
                     .font(.title2)
                     .frame(width: 42, height: 42)
                     .background(accent.opacity(0.12), in: RoundedRectangle(cornerRadius: 14, style: .continuous))
@@ -752,10 +744,31 @@ private struct ItemRow: View {
             VStack(alignment: .leading, spacing: 10) {
                 TextField("Prayer item", text: $item.title, axis: .vertical)
                     .font(.body)
+                    .focused(focusedItemCreatedAt, equals: item.createdAt)
+
+                if answeredList {
+                    DatePicker(
+                        "Started",
+                        selection: createdAtBinding,
+                        displayedComponents: [.date, .hourAndMinute]
+                    )
+                    .font(.body)
+                    .foregroundStyle(.secondary)
+                    .datePickerStyle(.compact)
+
+                    DatePicker(
+                        "Answered",
+                        selection: answeredAtBinding,
+                        displayedComponents: [.date, .hourAndMinute]
+                    )
+                    .font(.body)
+                    .foregroundStyle(.secondary)
+                    .datePickerStyle(.compact)
+                }
 
                 HStack(spacing: 8) {
                     if answeredList {
-                        actionChip(title: "Restore", tint: accent) {
+                        actionChip(title: "Pray Again", tint: accent) {
                             item.status = .unchecked
                         }
                     } else {
@@ -772,6 +785,30 @@ private struct ItemRow: View {
         .background(Color(.secondarySystemGroupedBackground), in: RoundedRectangle(cornerRadius: 22, style: .continuous))
     }
 
+    @ViewBuilder
+    private var statusIcon: some View {
+        switch item.status {
+        case .praying:
+            Text(item.status.emoji)
+        default:
+            Image(systemName: item.status.systemImageName)
+        }
+    }
+
+    private var createdAtBinding: Binding<Date> {
+        Binding(
+            get: { item.createdAt ?? .now },
+            set: { item.createdAt = $0 }
+        )
+    }
+
+    private var answeredAtBinding: Binding<Date> {
+        Binding(
+            get: { item.answeredAt ?? item.createdAt ?? .now },
+            set: { item.answeredAt = $0 }
+        )
+    }
+
     private func actionChip(title: String, tint: Color, action: @escaping () -> Void) -> some View {
         Button(title, action: action)
             .font(.footnote.weight(.semibold))
@@ -782,6 +819,7 @@ private struct ItemRow: View {
             .buttonStyle(.plain)
     }
 }
+
 
 #Preview {
     ContentView()

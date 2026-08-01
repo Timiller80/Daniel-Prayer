@@ -1,6 +1,6 @@
 //
 //  Item.swift
-//  Daniel Prayer
+//  Pray Like Daniel
 //
 //  Created by Timothy Miller on 1/3/25.
 //
@@ -32,6 +32,17 @@ enum PrayerStatus: Int, Codable, CaseIterable {
             "Praying"
         case .answered:
             "Answered"
+        }
+    }
+
+    var systemImageName: String {
+        switch self {
+        case .unchecked:
+            "square"
+        case .praying:
+            "hand.raised.fill"
+        case .answered:
+            "sparkles"
         }
     }
 
@@ -78,13 +89,22 @@ enum PrayerPeriod: Int, Codable, CaseIterable {
 
 @Model
 final class Item {
-    var title: String
-    var statusRawValue: Int
-    var prayerPeriodRawValue: Int
+    var title: String = ""
+    var statusRawValue: Int = PrayerStatus.unchecked.rawValue
+    var prayerPeriodRawValue: Int = PrayerPeriod.morning.rawValue
+    var createdAt: Date?
+    var answeredAt: Date?
 
     var status: PrayerStatus {
         get { PrayerStatus(rawValue: statusRawValue) ?? .unchecked }
-        set { statusRawValue = newValue.rawValue }
+        set {
+            statusRawValue = newValue.rawValue
+            if newValue == .answered {
+                answeredAt = answeredAt ?? .now
+            } else {
+                answeredAt = nil
+            }
+        }
     }
 
     var prayerPeriod: PrayerPeriod {
@@ -92,9 +112,11 @@ final class Item {
         set { prayerPeriodRawValue = newValue.rawValue }
     }
 
-    init(title: String = "", status: PrayerStatus = .unchecked, prayerPeriod: PrayerPeriod = .morning) {
+    init(title: String = "", status: PrayerStatus = .unchecked, prayerPeriod: PrayerPeriod = .morning, createdAt: Date = .now, answeredAt: Date? = nil) {
         self.title = title
         self.statusRawValue = status.rawValue
         self.prayerPeriodRawValue = prayerPeriod.rawValue
+        self.createdAt = createdAt
+        self.answeredAt = status == .answered ? (answeredAt ?? .now) : nil
     }
 }
